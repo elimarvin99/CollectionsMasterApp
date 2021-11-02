@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace CollectionsMasterConsoleUI
 {
@@ -29,7 +29,7 @@ namespace CollectionsMasterConsoleUI
 
             //Print the last number of the array              //Done
 
-            Console.WriteLine($"The last number in the array is {myIntArray[myIntArray.Length-1]}");
+            Console.WriteLine($"The last number in the array is {myIntArray[myIntArray.Length-1]}"); //length -1 because index starts form zero, so the last index is the length of the array -1
 
         Console.WriteLine("All Numbers Original");
             //Use this method to print out your numbers from arrays or lists                      //Done
@@ -43,6 +43,7 @@ namespace CollectionsMasterConsoleUI
 
             Console.WriteLine("All Numbers Reversed:");
 
+            //var numbersreverse = myIntArray.Reverse();    //the reverse method is available with the Systems.Linq library. or you can use a for loop to create a new array by going backwards on your original array and add it to a new reversed array.
             ReverseArray(myIntArray);
 
             NumberPrinter(myIntArray);
@@ -147,7 +148,7 @@ namespace CollectionsMasterConsoleUI
         {
             for (int i = 0; i < numbers.Length; i++)
             {
-                if (i % 3 == 0)
+                if (numbers[i] % 3 == 0) //check the value of the actual index in your array, not the value of i in the for loop
                 {
                     numbers[i] = 0;
                 }
@@ -196,7 +197,7 @@ namespace CollectionsMasterConsoleUI
         private static void Populater(int[] numbers)
         {
             Random rng = new Random();
-            for (int i = 0; i < 50; i++) //because starting at 0 we go up to 50 because an array also starts at 0 so an array with index 50 really goes from 0 to 49
+            for (int i = 0; i < numbers.Length; i++) //because starting at 0 we go up to 50 because an array also starts at 0 so an array with index 50 really goes from 0 to 49
             {
                 numbers[i] = rng.Next(0,50);
             }
