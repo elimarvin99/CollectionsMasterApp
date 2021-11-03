@@ -90,14 +90,16 @@ namespace CollectionsMasterConsoleUI
 
             //Print the new capacity             //Done
 
-            NumberPrinter(myIntList);
+            Console.WriteLine($"myIntList capacity is now : {myIntList.Capacity}");
+
+            //capacity now is 64 bit because we have 50 values so compiler gives it more bit space
             
             Console.WriteLine("---------------------");
 
             //Create a method that prints if a user number is present in the list                //Done
             //Remember: What if the user types "abc" accident your app should handle that!         //Done            
             Console.WriteLine("What number will you search for in the number list?");
-            //var userInput = Convert.ToInt32(Console.ReadLine());
+            
             int userInput;
             while (!int.TryParse(Console.ReadLine(), out userInput))
             {
@@ -138,9 +140,9 @@ namespace CollectionsMasterConsoleUI
 
             //Clear the list                                          //Done
             myIntList.Clear();
-            
 
-
+            Console.WriteLine("myIntList was cleared");
+            Console.WriteLine(myIntList.Count);
             #endregion
         }
 
@@ -171,6 +173,14 @@ namespace CollectionsMasterConsoleUI
 
         private static void NumberChecker(List<int> numberList, int searchNumber)
         {
+            //if (numberList.Contains(searchNumber))
+            //{
+            //    Console.WriteLine("yes we have the number you are looking for");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("no that number is not in the list");
+            //}
             var placeholderInt = new List<int>();
             foreach (var i in numberList)
             {
@@ -181,16 +191,21 @@ namespace CollectionsMasterConsoleUI
                 }
                 
             }
-            Console.WriteLine($"{searchNumber} was found {placeholderInt.Count} times in your list");
+            Console.WriteLine($"{searchNumber} was found {placeholderInt.Count} time(s) in your list");
         }
 
-        private static void Populater(List<int> numberList)
+        private static void Populater(List<int> numberList)        
         {
             Random rng = new Random();
             for (int i = 0; i < 50; i++)
             {
                 numberList.Add(rng.Next(0, 50));
             }
+            //another way to populate the list
+            //while (numberList.Count <= 50)  //up to 50 because not going by index, rather by total items in list
+            //{
+            //    numberList.Add(rng.Next(0, 50));
+            //}
 
         }
 
